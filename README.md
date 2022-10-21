@@ -8,7 +8,7 @@ The side stacks are used to create words.
 Move letters from the center stack to the side stacks and try to create words on
 them.
 Your score is based off how many words you can create within a certain number of
-tiles
+tiles.
 
 ### Concerns:
 
