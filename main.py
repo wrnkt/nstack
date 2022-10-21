@@ -1,3 +1,6 @@
+import random
+import string
+
 class Tile:
     def __init__(self, letter: str):
         self.letter = letter
@@ -35,6 +38,23 @@ class StackList:
             print(stack)
             stack.print()
 
+def create_letter_list(length: int, random_injection = 0):
+    # random_injection represents the degree to which random letters are put in
+    # between the words. 0 is none, all the letters will be part of a word.
+    match random_injection:
+        case 0:
+            print("GENERATING WITH NO RANDOM INJECTION")
+        case 10:
+            return make_rand_string(length)
+        case _:
+            print("NOT IMPLEMENTED")
+        
+
+def make_rand_string(length: int) -> str:
+    return ''.join(random.SystemRandom().choice(string.ascii_lowercase)
+            for _ in range(length))
+    
+
 def test():
     stack_test = Stack("abcde")
     stack_test.print()
@@ -49,4 +69,6 @@ def main():
     play_stacks.print()
 
 if __name__ == "__main__":
-    main()
+    # main()
+    print(make_rand_string(5))
+    print(create_letter_list(12, random_injection=10))
