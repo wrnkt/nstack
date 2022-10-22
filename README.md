@@ -1,4 +1,4 @@
-## 2 Stack
+## N Stack
 
 ### Gameplay:
 
