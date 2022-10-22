@@ -18,23 +18,23 @@ class Tile:
 class Stack:
     def __init__(self, entry_list: list[str], name: str, reverse = False):
         self.name = name
-        self.letter_list = []
+        self.tile_list = []
         for c in entry_list:
-            self.letter_list.append(Tile(c))
+            self.tile_list.append(Tile(c))
     
     def pop_last_tile(self) -> str:
-        last_tile = self.letter_list.pop()
+        last_tile = self.tile_list.pop()
         last_tile_char = last_tile.get_letter()
         return last_tile_char
 
     def get_length(self) -> int:
-        return len(self.letter_list)
+        return len(self.tile_list)
 
     def get_tile(self, i):
-        return letterlist[i]
+        return self.tile_list[i]
 
     def print(self):
-        for tile in self.letter_list:
+        for tile in self.tile_list:
             tile.print()
 
     def print_name_and_tiles(self):
@@ -55,12 +55,10 @@ class StackList:
             placeholder = '#'
             for s in self.stacks:
                 try: 
-                    row += self.s.get_tile(i)
+                    row += f"{s.get_tile(i).get_letter():<15}"
                 except:
                     row += f"{placeholder:<15}"
-
-        for stack in self.stacks:
-            stack.print_name_and_tiles()
+            print(row)
 
 
 LOCAL_WORD_FILE = "/usr/share/dict/words"
