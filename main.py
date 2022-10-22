@@ -27,6 +27,9 @@ class Stack:
         last_tile_char = last_tile.get_letter()
         return last_tile_char
 
+    def get_length(self) -> int:
+        return len(self.letter_list)
+
     def print(self):
         for tile in self.letter_list:
             tile.print()
