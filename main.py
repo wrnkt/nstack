@@ -61,9 +61,10 @@ def random_word_length_filter(low: int, high: int, n: int, dictionary: list[str]
     for word in dictionary:
         if len(word) >= low and len(word) <= high:
             filtered_dict.append(word)
+    output_list = []
+    [output_list.append(random.choice(filtered_dict)) for x in"1"*n]
 
-    print(filtered_dict)
-    return [""]
+    return output_list
         
 
 def make_rand_string(length: int) -> str:
@@ -88,4 +89,4 @@ if __name__ == "__main__":
     # main()
     # print(make_rand_string(5))
     # print(create_letter_list(12, random_injection=0))
-    random_word_length_filter(1,3,3,LOCAL_DICTIONARY_LIST)
+    print(random_word_length_filter(3,4,3,LOCAL_DICTIONARY_LIST))
