@@ -16,10 +16,10 @@ class Tile:
         print(self.letter)
 
 class Stack:
-    def __init__(self, letter_list: list[str], name: str, reverse = False):
+    def __init__(self, entry_list: list[str], name: str, reverse = False):
         self.name = name
         self.letter_list = []
-        for c in letter_list:
+        for c in entry_list:
             self.letter_list.append(Tile(c))
     
     def pop_last_tile(self) -> str:
