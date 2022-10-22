@@ -16,7 +16,8 @@ class Tile:
         print(self.letter)
 
 class Stack:
-    def __init__(self, letter_list: list[str], reverse = False):
+    def __init__(self, letter_list: list[str], name: str, reverse = False):
+        self.name = name
         self.letter_list = []
         for c in letter_list:
             self.letter_list.append(Tile(c))
@@ -36,8 +37,6 @@ class StackList:
 
     def print(self):
         for stack in self.stacks:
-            print(stack)
-            stack.print()
 
 
 LOCAL_WORD_FILE = "/usr/share/dict/words"
@@ -99,7 +98,7 @@ def main():
     play_stacks.print()
 
 if __name__ == "__main__":
-    # main()
+    main()
     # print(make_rand_string(5))
-    print(create_letter_list(36, LOCAL_DICTIONARY_LIST, random_injection=0))
+    # print(create_letter_list(36, LOCAL_DICTIONARY_LIST, random_injection=0))
     # print(random_word_length_filter((3,4),3,LOCAL_DICTIONARY_LIST))
