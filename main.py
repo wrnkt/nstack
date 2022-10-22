@@ -31,12 +31,18 @@ class Stack:
         for tile in self.letter_list:
             tile.print()
 
+    def print_name_and_tiles(self):
+        print(self.name)
+        self.print()
+
 class StackList:
     def __init__(self, stack_list: list[Stack]):
         self.stacks = stack_list
 
     def print(self):
+        print(f"".join([f"{s.name:<15}" for s in self.stacks]))
         for stack in self.stacks:
+            stack.print_name_and_tiles()
 
 
 LOCAL_WORD_FILE = "/usr/share/dict/words"
@@ -92,8 +98,8 @@ def test():
     
 
 def main():
-    s1 = Stack("weuifvjkdf")
-    s2 = Stack("tusdwefiwd")
+    s1 = Stack("weuifvjkdf", "Stack 1")
+    s2 = Stack("tusdwefiwd", "Stack 2")
     play_stacks = StackList([s1, s2]) 
     play_stacks.print()
 
