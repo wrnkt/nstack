@@ -30,6 +30,9 @@ class Stack:
     def get_length(self) -> int:
         return len(self.letter_list)
 
+    def get_tile(self, i):
+        return letterlist[i]
+
     def print(self):
         for tile in self.letter_list:
             tile.print()
@@ -43,7 +46,19 @@ class StackList:
         self.stacks = stack_list
 
     def print(self):
+        # print justified title
         print(f"".join([f"{s.name:<15}" for s in self.stacks]))
+        # calculate max length of stack to iterate over
+        max_length = max([s.get_length() for s in self.stacks])
+        for i in range(0, max_length):
+            row = ""
+            placeholder = '#'
+            for s in self.stacks:
+                try: 
+                    row += self.s.get_tile(i)
+                except:
+                    row += f"{placeholder:<15}"
+
         for stack in self.stacks:
             stack.print_name_and_tiles()
 
