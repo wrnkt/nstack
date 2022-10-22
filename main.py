@@ -56,7 +56,13 @@ def create_letter_list(length: int, random_injection = 0):
 
 def random_word_length_filter(low: int, high: int, n: int, dictionary: list[str]) -> list[str]:
     # return a length n list of words between upper and lower bound
-    print(random.choice(dictionary))
+    filtered_dict = []
+    count = 0
+    for word in dictionary:
+        if len(word) >= low and len(word) <= high:
+            filtered_dict.append(word)
+
+    print(filtered_dict)
     return [""]
         
 
@@ -82,4 +88,4 @@ if __name__ == "__main__":
     # main()
     # print(make_rand_string(5))
     # print(create_letter_list(12, random_injection=0))
-    random_word_length_filter()
+    random_word_length_filter(1,3,3,LOCAL_DICTIONARY_LIST)
