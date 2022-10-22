@@ -42,6 +42,8 @@ class StackList:
 LOCAL_WORD_FILE = "/usr/share/dict/words"
 LOCAL_DICTIONARY_LIST = open(LOCAL_WORD_FILE).read().splitlines()
 
+WORD_LENGTH_RANGE = (2,5)
+
 def create_letter_list(length: int, random_injection = 0):
     # random_injection represents the degree to which random letters are put in
     # between the words. 0 is none, all the letters will be part of a word.
@@ -54,12 +56,12 @@ def create_letter_list(length: int, random_injection = 0):
         case _:
             print("NOT IMPLEMENTED")
 
-def random_word_length_filter(low: int, high: int, n: int, dictionary: list[str]) -> list[str]:
+def random_word_length_filter(len_range, n: int, dictionary: list[str]) -> list[str]:
     # return a length n list of words between upper and lower bound
     filtered_dict = []
     count = 0
     for word in dictionary:
-        if len(word) >= low and len(word) <= high:
+        if len(word) >= len_range[0] and len(word) <= len_range[1]:
             filtered_dict.append(word)
     output_list = []
     [output_list.append(random.choice(filtered_dict)) for x in"1"*n]
@@ -89,4 +91,4 @@ if __name__ == "__main__":
     # main()
     # print(make_rand_string(5))
     # print(create_letter_list(12, random_injection=0))
-    print(random_word_length_filter(3,4,3,LOCAL_DICTIONARY_LIST))
+    print(random_word_length_filter((3,4),3,LOCAL_DICTIONARY_LIST))
