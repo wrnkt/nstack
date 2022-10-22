@@ -1,5 +1,6 @@
 import random
 import string
+import math
 
 class Tile:
     def __init__(self, letter: str):
@@ -44,13 +45,17 @@ LOCAL_DICTIONARY_LIST = open(LOCAL_WORD_FILE).read().splitlines()
 
 WORD_LENGTH_RANGE = (2,5)
 
-def create_letter_list(length: int, random_injection = 0):
+def create_letter_list(length: int, dictionary: list[str], random_injection = 0):
     # random_injection represents the degree to which random letters are put in
     # between the words. 0 is none, all the letters will be part of a word.
     match random_injection:
         case 0:
             print("GENERATING WITH NO RANDOM INJECTION")
-            print(f"{LOCAL_DICTIONARY_LIST = }")
+            working_list = random_word_length_filter(WORD_LENGTH_RANGE,
+                    math.floor((length/WORD_LENGTH_RANGE[0])), dictionary)
+            working_string = "".join(working_list)
+            return working_string[:length]
+
         case 10:
             return make_rand_string(length)
         case _:
@@ -59,15 +64,17 @@ def create_letter_list(length: int, random_injection = 0):
 def random_word_length_filter(len_range, n: int, dictionary: list[str]) -> list[str]:
     # return a length n list of words between upper and lower bound
     filtered_dict = []
+    output_list = []
     count = 0
+
     for word in dictionary:
         if len(word) >= len_range[0] and len(word) <= len_range[1]:
             filtered_dict.append(word)
-    output_list = []
+
     [output_list.append(random.choice(filtered_dict)) for x in"1"*n]
 
     return output_list
-        
+
 
 def make_rand_string(length: int) -> str:
     return ''.join(random.SystemRandom().choice(string.ascii_lowercase)
@@ -90,5 +97,5 @@ def main():
 if __name__ == "__main__":
     # main()
     # print(make_rand_string(5))
-    # print(create_letter_list(12, random_injection=0))
-    print(random_word_length_filter((3,4),3,LOCAL_DICTIONARY_LIST))
+    print(create_letter_list(12, LOCAL_DICTIONARY_LIST, random_injection=0))
+    # print(random_word_length_filter((3,4),3,LOCAL_DICTIONARY_LIST))
