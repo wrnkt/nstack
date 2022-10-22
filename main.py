@@ -66,7 +66,7 @@ LOCAL_DICTIONARY_LIST = open(LOCAL_WORD_FILE).read().splitlines()
 
 WORD_LENGTH_RANGE = (2,5)
 
-def create_letter_list(length: int, dictionary: list[str], random_injection = 0):
+def create_letter_string(length: int, dictionary: list[str], random_injection = 0):
     # random_injection represents the degree to which random letters are put in
     # between the words. 0 is none, all the letters will be part of a word.
     match random_injection:
@@ -116,11 +116,13 @@ def test():
 def main():
     s1 = Stack("weuifvjkdf", "Stack 1")
     s2 = Stack("tusdwefiwd", "Stack 2")
-    play_stacks = StackList([s1, s2]) 
+    s3 = Stack(create_letter_string(20, LOCAL_DICTIONARY_LIST,
+        random_injection=0), "Stack 3")
+    play_stacks = StackList([s1, s2, s3]) 
     play_stacks.print()
 
 if __name__ == "__main__":
     main()
     # print(make_rand_string(5))
-    # print(create_letter_list(36, LOCAL_DICTIONARY_LIST, random_injection=0))
+    # print(create_letter_string(36, LOCAL_DICTIONARY_LIST, random_injection=0))
     # print(random_word_length_filter((3,4),3,LOCAL_DICTIONARY_LIST))
