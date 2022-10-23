@@ -166,6 +166,7 @@ def get_move_input(sl: StackList):
     print(f"{len(sl.stacks) = }")
 
     print(f"Moving tile from {src_stack} to {dest_stack}")
+    move_top_tile_a_to_b(sl.stacks[int(src_stack)], sl.stacks[int(dest_stack)])
 
 def game_test():
     s1 = Stack("weuif", "Stack 1")
@@ -178,6 +179,7 @@ def game_test():
     print_state(play_stacks)
 
     get_move_input(play_stacks)
+    print_state(play_stacks)
 
 
 
