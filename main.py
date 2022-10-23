@@ -7,6 +7,9 @@ class Tile:
     def __init__(self, letter: str):
         self.letter = letter
 
+    def __str__(self):
+        return self.letter
+
     def get_letter(self) -> str:
         return self.letter
 
@@ -22,6 +25,14 @@ class Stack:
         self.tile_list = []
         for c in entry_list:
             self.tile_list.append(Tile(c))
+
+    def __str__(self):
+        str_out = ""
+        str_out += self.name + "\n"
+        for tile in reversed(self.tile_list):
+            str_out += str(tile) + "\n"
+
+        return str_out
     
     def pop_last_tile(self) -> str:
         last_tile = self.tile_list.pop()
@@ -169,6 +180,7 @@ def get_move_input(sl: StackList):
     print(f"Moving tile from {src_stack} to {dest_stack}")
     move_top_tile_a_to_b(sl.stacks[int(src_stack)], sl.stacks[int(dest_stack)])
 
+
 def game_test():
     s1 = Stack("weuif", "Stack 1")
     s2 = Stack("tfuiwd", "Stack 2")
@@ -182,7 +194,7 @@ def game_test():
     get_move_input(play_stacks)
     print_state(play_stacks)
 
-
+    print(s1)
 
 def main():
     game_test()
