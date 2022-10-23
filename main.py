@@ -145,7 +145,7 @@ def test():
     print(f"add tile {nt}")
     stack_test.print()
 
-def get_move_input(sl: StackList):
+def get_move(sl: StackList):
     print("From left to right select the index of the source stack:")
     stack_prompt = ""
 
@@ -156,10 +156,15 @@ def get_move_input(sl: StackList):
     dest_stack = ""
     src_stack = ""
 
+    def is_valid_stack(sl: StackList, s: Stack):
+        if int(s) >= len(sl.stacks):
+            print(f"Pick a stack between 0 and {len(sl.stacks) - 1}")
+        return int(s) < (len(sl.stacks))
+
     while True:
         src_stack = input("Move tile from: ")
-        if int(src_stack) > len(sl.stacks) - 1:
-            print(f"Pick a stack between 0 and {len(sl.stacks) - 1}")
+        if not is_valid_stack(sl, src_stack):
+            continue
         elif dest_stack != src_stack:
             break
         else:
@@ -167,8 +172,8 @@ def get_move_input(sl: StackList):
 
     while True:
         dest_stack = input("Move tile to: ")
-        if int(dest_stack) > len(sl.stacks) - 1:
-            print(f"Pick a stack between 0 and {len(sl.stacks) - 1}")
+        if not is_valid_stack(sl, dest_stack):
+            continue
         elif dest_stack == src_stack:
             print("Source and destination stack can't be the same.")
         elif dest_stack != src_stack:
@@ -191,10 +196,10 @@ def game_test():
     play_stacks = StackList([s1, s3, user_stack]) 
     print_state(play_stacks)
 
-    get_move_input(play_stacks)
+    get_move(play_stacks)
     print_state(play_stacks)
 
-    print(s1)
+    print(s1.tile_list[0])
 
 def main():
     game_test()
