@@ -26,6 +26,9 @@ class Stack:
         last_tile = self.tile_list.pop()
         return last_tile
 
+    def add_new_tile(self, new_tile: Tile):
+        self.tile_list.append(new_tile)
+
     def get_length(self) -> int:
         return len(self.tile_list)
 
@@ -100,7 +103,7 @@ def random_word_length_filter(len_range, n: int, dictionary: list[str]) -> list[
     return output_list
 
 def move_top_tile_a_to_b(a: Stack, b: Stack):
-    # a.pop_last_tile()
+    # b. (a.pop_last_tile())
     pass
 
 
@@ -113,6 +116,9 @@ def test():
     stack_test = Stack("abcde", "Test Stack")
     stack_test.print()
     print(f"remove letter: {stack_test.pop_last_tile().get_letter()}")
+    nt = Tile("p")
+    stack_test.add_new_tile(nt)
+    print(f"add tile {nt}")
     stack_test.print()
 
     
