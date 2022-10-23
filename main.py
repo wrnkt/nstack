@@ -79,7 +79,8 @@ def create_letter_string(length: int, dictionary: list[str], random_injection = 
                     math.floor((length/WORD_LENGTH_RANGE[0])), dictionary)
             working_string = "".join(working_list)
             return working_string[:length]
-
+        case range(1,10):
+            print("NOT IMPLEMENTED")
         case 10:
             return make_rand_string(length)
         case _:
