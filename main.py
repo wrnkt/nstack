@@ -146,7 +146,7 @@ def test():
     stack_test.print()
 
 def get_move(sl: StackList):
-    print("From left to right select the index of the source stack:")
+    print("From left to right select the number of the source stack:")
     stack_prompt = ""
 
     for stack in sl.stacks:
@@ -180,6 +180,7 @@ def get_move(sl: StackList):
             break
         else:
             print(f"Unhandled input error. {src_stack = } | {dest_stack = }")
+
     print(f"{len(sl.stacks) = }")
 
     print(f"Moving tile from {src_stack} to {dest_stack}")
@@ -188,17 +189,18 @@ def get_move(sl: StackList):
 
 
 def game_test():
-    s1 = Stack("weuif", "Stack 1")
-    s2 = Stack("tfuiwd", "Stack 2")
+    s1 = Stack("weuif", "Stack")
+    s2 = Stack("tfuiwd", "Stack")
     s3 = Stack(create_letter_string(9, LOCAL_DICTIONARY_LIST,
-        random_injection=0), "Stack 3")
-    user_stack = Stack("", "Play stack")
+        random_injection=0), "Stack")
+    user_stack = Stack("", "Play Stack")
 
     play_stacks = StackList([s1, s3, user_stack]) 
     print_state(play_stacks)
 
-    get_move(play_stacks)
-    print_state(play_stacks)
+    while True:
+        get_move(play_stacks)
+        print_state(play_stacks)
 
     print(s1.tile_list[0])
 
