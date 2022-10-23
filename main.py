@@ -133,6 +133,15 @@ def test():
     print(f"add tile {nt}")
     stack_test.print()
 
+def get_move_input(sl: StackList):
+    print("Select a stack to move.")
+    print("From left to right:")
+    stack_prompt = ""
+    for stack in sl.stacks:
+        stack_prompt += f"{stack.name}:{sl.stacks.index(stack):<10}"
+
+    print(stack_prompt)
+
 def game_test():
     s1 = Stack("weuif", "Stack 1")
     s2 = Stack("tfuiwd", "Stack 2")
@@ -143,8 +152,8 @@ def game_test():
     play_stacks = StackList([s1, s3, user_stack]) 
     print_state(play_stacks)
 
-    move_top_tile_a_to_b(s1, s2)
-    print_state(play_stacks)
+    get_move_input(play_stacks)
+
 
 
 def main():
