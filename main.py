@@ -121,13 +121,15 @@ def test():
     stack_test.print()
 
 def print_state(sl: StackList):
-    print("-----------")
-    x = max([len(s.name) for s in sl.stacks])
-    if x > 18:
-        pass
-    else:
-        print("-"*18*len(sl.stacks))
+    def print_separator(sl: StackList):
+        x = max([len(s.name) for s in sl.stacks])
+        if x > 18:
+            print("-"*x*sl.stacks)
+        else:
+            print("-"*18*len(sl.stacks))
+    print_separator(sl)
     sl.print()
+    print_separator(sl)
     
 
 def main():
