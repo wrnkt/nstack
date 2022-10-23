@@ -52,7 +52,7 @@ class StackList:
         print(f"".join([f"{s.name:<15}" for s in self.stacks]))
         # calculate max length of stack to iterate over
         max_length = max([s.get_length() for s in self.stacks])
-        for i in range(0, max_length):
+        for i in reversed(range(0, max_length)):
             row = ""
             placeholder = '#'
             for s in self.stacks:
@@ -120,7 +120,6 @@ def test():
     stack_test.add_new_tile(nt)
     print(f"add tile {nt}")
     stack_test.print()
-
     
 
 def main():
