@@ -150,16 +150,16 @@ def get_move(sl: StackList):
     stack_prompt = ""
 
     for stack in sl.stacks:
-        stack_prompt += f"{stack.name}:{sl.stacks.index(stack):<10}"
+        stack_prompt += f"{stack.name}:{sl.stacks.index(stack) + 1:<10}"
     print(stack_prompt)
 
     dest_stack = ""
     src_stack = ""
 
     def is_valid_stack(sl: StackList, s: Stack):
-        if int(s) >= len(sl.stacks):
-            print(f"Pick a stack between 0 and {len(sl.stacks) - 1}")
-        return int(s) < (len(sl.stacks))
+        if int(s) > len(sl.stacks) or int(s) < 1:
+            print(f"Pick a stack between 1 and {len(sl.stacks)}")
+        return int(s) <= (len(sl.stacks)) and int(s) > 0
 
     while True:
         src_stack = input("Move tile from: ")
@@ -183,7 +183,8 @@ def get_move(sl: StackList):
     print(f"{len(sl.stacks) = }")
 
     print(f"Moving tile from {src_stack} to {dest_stack}")
-    move_top_tile_a_to_b(sl.stacks[int(src_stack)], sl.stacks[int(dest_stack)])
+    move_top_tile_a_to_b(sl.stacks[int(src_stack)-1],
+            sl.stacks[int(dest_stack)-1])
 
 
 def game_test():
