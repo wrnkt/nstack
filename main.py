@@ -112,14 +112,6 @@ def move_top_tile_a_to_b(a: Stack, b: Stack):
     b.add_new_tile(a.pop_last_tile())
     pass    
 
-def test():
-    stack_test = Stack("abcde", "Test Stack")
-    stack_test.print()
-    print(f"remove letter: {stack_test.pop_last_tile().get_letter()}")
-    nt = Tile("p")
-    stack_test.add_new_tile(nt)
-    print(f"add tile {nt}")
-    stack_test.print()
 
 def print_state(sl: StackList):
     def print_separator(sl: StackList):
@@ -132,8 +124,16 @@ def print_state(sl: StackList):
     sl.print()
     print_separator(sl)
     
+def test():
+    stack_test = Stack("abcde", "Test Stack")
+    stack_test.print()
+    print(f"remove letter: {stack_test.pop_last_tile().get_letter()}")
+    nt = Tile("p")
+    stack_test.add_new_tile(nt)
+    print(f"add tile {nt}")
+    stack_test.print()
 
-def main():
+def game_test():
     s1 = Stack("weuif", "Stack 1")
     s2 = Stack("tfuiwd", "Stack 2")
     s3 = Stack(create_letter_string(9, LOCAL_DICTIONARY_LIST,
@@ -146,9 +146,9 @@ def main():
     move_top_tile_a_to_b(s1, s2)
     print_state(play_stacks)
 
+
+def main():
+    game_test()
+
 if __name__ == "__main__":
     main()
-    # test()
-    # print(make_rand_string(5))
-    # print(create_letter_string(36, LOCAL_DICTIONARY_LIST, random_injection=0))
-    # print(random_word_length_filter((3,4),3,LOCAL_DICTIONARY_LIST))
