@@ -22,33 +22,33 @@ class Tile:
 class Stack:
     def __init__(self, entry_list: list[str], name: str, reverse = False):
         self.name = name
-        self.tile_list = []
+        self.tiles = []
         for c in entry_list:
-            self.tile_list.append(Tile(c))
+            self.tiles.append(Tile(c))
 
     def __str__(self):
         str_out = ""
         str_out += self.name + "\n"
-        for tile in reversed(self.tile_list):
+        for tile in reversed(self.tiles):
             str_out += str(tile) + "\n"
 
         return str_out
     
     def pop_last_tile(self) -> str:
-        last_tile = self.tile_list.pop()
+        last_tile = self.tiles.pop()
         return last_tile
 
     def add_new_tile(self, new_tile: Tile):
-        self.tile_list.append(new_tile)
+        self.tiles.append(new_tile)
 
     def get_length(self) -> int:
-        return len(self.tile_list)
+        return len(self.tiles)
 
     def get_tile(self, i):
-        return self.tile_list[i]
+        return self.tiles[i]
 
     def print(self):
-        for tile in self.tile_list:
+        for tile in self.tiles:
             tile.print()
 
     def print_name_and_tiles(self):
@@ -202,7 +202,7 @@ def game_test():
         get_move(play_stacks)
         print_state(play_stacks)
 
-    print(s1.tile_list[0])
+    print(s1.tiles[0])
 
 def main():
     game_test()
