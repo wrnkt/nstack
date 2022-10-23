@@ -1,6 +1,7 @@
 import random
 import string
 import math
+from statistics import median
 
 class Tile:
     def __init__(self, letter: str):
@@ -49,7 +50,7 @@ class StackList:
 
     def print(self):
         # print justified title
-        print(f"".join([f"{s.name:<15}" for s in self.stacks]))
+        print(f"".join([f"{s.name:<18}" for s in self.stacks]))
         # calculate max length of stack to iterate over
         max_length = max([s.get_length() for s in self.stacks])
         for i in reversed(range(0, max_length)):
@@ -57,9 +58,9 @@ class StackList:
             placeholder = '#'
             for s in self.stacks:
                 try: 
-                    row += f"{s.get_tile(i).get_letter():<15}"
+                    row += f"{s.get_tile(i).get_letter():<18}"
                 except:
-                    row += f"{placeholder:<15}"
+                    row += f"{placeholder:<18}"
             print(row)
 
 
@@ -102,15 +103,13 @@ def random_word_length_filter(len_range, n: int, dictionary: list[str]) -> list[
 
     return output_list
 
-def move_top_tile_a_to_b(a: Stack, b: Stack):
-    b.add_new_tile(a.pop_last_tile())
-    pass
-
-
 def make_rand_string(length: int) -> str:
     return ''.join(random.SystemRandom().choice(string.ascii_lowercase)
             for _ in range(length))
-    
+
+def move_top_tile_a_to_b(a: Stack, b: Stack):
+    b.add_new_tile(a.pop_last_tile())
+    pass    
 
 def test():
     stack_test = Stack("abcde", "Test Stack")
@@ -120,6 +119,15 @@ def test():
     stack_test.add_new_tile(nt)
     print(f"add tile {nt}")
     stack_test.print()
+
+def print_state(sl: StackList):
+    print("-----------")
+    x = max([len(s.name) for s in sl.stacks])
+    if x > 18:
+        pass
+    else:
+        print("-"*18*len(sl.stacks))
+    sl.print()
     
 
 def main():
@@ -131,6 +139,7 @@ def main():
     play_stacks.print()
     move_top_tile_a_to_b(s1, s2)
     play_stacks.print()
+    print_state(play_stacks)
 
 if __name__ == "__main__":
     main()
