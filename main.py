@@ -103,7 +103,7 @@ def random_word_length_filter(len_range, n: int, dictionary: list[str]) -> list[
     return output_list
 
 def move_top_tile_a_to_b(a: Stack, b: Stack):
-    # b. (a.pop_last_tile())
+    b.add_new_tile(a.pop_last_tile())
     pass
 
 
@@ -124,16 +124,18 @@ def test():
     
 
 def main():
-    s1 = Stack("weuifvjkdf", "Stack 1")
-    s2 = Stack("tusdwefiwd", "Stack 2")
-    s3 = Stack(create_letter_string(20, LOCAL_DICTIONARY_LIST,
+    s1 = Stack("weuif", "Stack 1")
+    s2 = Stack("tfuiwd", "Stack 2")
+    s3 = Stack(create_letter_string(9, LOCAL_DICTIONARY_LIST,
         random_injection=0), "Stack 3")
     play_stacks = StackList([s1, s2, s3]) 
     play_stacks.print()
+    move_top_tile_a_to_b(s1, s2)
+    play_stacks.print()
 
 if __name__ == "__main__":
-    # main()
-    test()
+    main()
+    # test()
     # print(make_rand_string(5))
     # print(create_letter_string(36, LOCAL_DICTIONARY_LIST, random_injection=0))
     # print(random_word_length_filter((3,4),3,LOCAL_DICTIONARY_LIST))
