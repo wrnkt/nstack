@@ -24,8 +24,7 @@ class Stack:
     
     def pop_last_tile(self) -> str:
         last_tile = self.tile_list.pop()
-        last_tile_char = last_tile.get_letter()
-        return last_tile_char
+        return last_tile
 
     def get_length(self) -> int:
         return len(self.tile_list)
@@ -100,6 +99,10 @@ def random_word_length_filter(len_range, n: int, dictionary: list[str]) -> list[
 
     return output_list
 
+def move_top_tile_a_to_b(a: Stack, b: Stack):
+    # a.pop_last_tile()
+    pass
+
 
 def make_rand_string(length: int) -> str:
     return ''.join(random.SystemRandom().choice(string.ascii_lowercase)
@@ -107,10 +110,11 @@ def make_rand_string(length: int) -> str:
     
 
 def test():
-    stack_test = Stack("abcde")
+    stack_test = Stack("abcde", "Test Stack")
     stack_test.print()
-    print(stack_test.pop_last_tile())
+    print(f"remove letter: {stack_test.pop_last_tile().get_letter()}")
     stack_test.print()
+
     
 
 def main():
@@ -122,7 +126,8 @@ def main():
     play_stacks.print()
 
 if __name__ == "__main__":
-    main()
+    # main()
+    test()
     # print(make_rand_string(5))
     # print(create_letter_string(36, LOCAL_DICTIONARY_LIST, random_injection=0))
     # print(random_word_length_filter((3,4),3,LOCAL_DICTIONARY_LIST))
