@@ -49,8 +49,9 @@ class StackList:
         self.stacks = stack_list
 
     def print(self):
+        PADDING = 18
         # print justified title
-        print(f"".join([f"{s.name:<18}" for s in self.stacks]))
+        print(f"".join([f"{s.name:<{PADDING}}" for s in self.stacks]))
         # calculate max length of stack to iterate over
         max_length = max([s.get_length() for s in self.stacks])
         for i in reversed(range(0, max_length)):
@@ -58,9 +59,9 @@ class StackList:
             placeholder = '#'
             for s in self.stacks:
                 try: 
-                    row += f"{s.get_tile(i).get_letter():<18}"
+                    row += f"{s.get_tile(i).get_letter():<{PADDING}}"
                 except:
-                    row += f"{placeholder:<18}"
+                    row += f"{placeholder:<{PADDING}}"
             print(row)
 
 
