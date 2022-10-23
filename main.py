@@ -144,17 +144,28 @@ def get_move_input(sl: StackList):
     dest_stack = ""
     src_stack = ""
 
-    src_stack = input("Move tile from: ")
-
+    while True:
+        src_stack = input("Move tile from: ")
+        if int(src_stack) > len(sl.stacks) - 1:
+            print(f"Pick a stack between 0 and {len(sl.stacks) - 1}")
+        elif dest_stack != src_stack:
+            break
+        else:
+            print(f"Unhandled input error. {src_stack = } | {dest_stack = }")
 
     while True:
         dest_stack = input("Move tile to: ")
-        if dest_stack != src_stack:
+        if int(dest_stack) > len(sl.stacks) - 1:
+            print(f"Pick a stack between 0 and {len(sl.stacks) - 1}")
+        elif dest_stack == src_stack:
+            print("Source and destination stack can't be the same.")
+        elif dest_stack != src_stack:
             break
         else:
-            print("Source and destination stack can't be the same.")
+            print(f"Unhandled input error. {src_stack = } | {dest_stack = }")
+    print(f"{len(sl.stacks) = }")
 
-    print(f"Moving file from {src_stack} to {dest_stack}")
+    print(f"Moving tile from {src_stack} to {dest_stack}")
 
 def game_test():
     s1 = Stack("weuif", "Stack 1")
