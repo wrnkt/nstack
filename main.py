@@ -137,10 +137,12 @@ def main():
     s2 = Stack("tfuiwd", "Stack 2")
     s3 = Stack(create_letter_string(9, LOCAL_DICTIONARY_LIST,
         random_injection=0), "Stack 3")
-    play_stacks = StackList([s1, s2, s3]) 
-    play_stacks.print()
+    user_stack = Stack("", "Play stack")
+
+    play_stacks = StackList([s1, s3, user_stack]) 
+    print_state(play_stacks)
+
     move_top_tile_a_to_b(s1, s2)
-    play_stacks.print()
     print_state(play_stacks)
 
 if __name__ == "__main__":
