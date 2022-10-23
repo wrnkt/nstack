@@ -134,13 +134,27 @@ def test():
     stack_test.print()
 
 def get_move_input(sl: StackList):
-    print("Select a stack to move.")
-    print("From left to right:")
+    print("From left to right select the index of the source stack:")
     stack_prompt = ""
+
     for stack in sl.stacks:
         stack_prompt += f"{stack.name}:{sl.stacks.index(stack):<10}"
-
     print(stack_prompt)
+
+    dest_stack = ""
+    src_stack = ""
+
+    src_stack = input("Move tile from: ")
+
+
+    while True:
+        dest_stack = input("Move tile to: ")
+        if dest_stack != src_stack:
+            break
+        else:
+            print("Source and destination stack can't be the same.")
+
+    print(f"Moving file from {src_stack} to {dest_stack}")
 
 def game_test():
     s1 = Stack("weuif", "Stack 1")
