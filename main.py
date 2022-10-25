@@ -1,7 +1,9 @@
 import random
-import string
 import math
+import string
 from statistics import median
+
+import debug
 
 class Tile:
     def __init__(self, letter: str):
