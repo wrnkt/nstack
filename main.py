@@ -9,14 +9,19 @@ class Tile:
     def __init__(self, letter: str):
         self.letter = letter
 
-    def __str__(self):
-        return self.letter
+    @property
+    def letter(self):
+        return self._letter
 
-    def get_letter(self) -> str:
-        return self.letter
+    @letter.setter
+    def letter(self, value):
+        self._letter = value
 
     def set_letter(self, letter: str):
         self.letter = letter
+
+    def __str__(self):
+        return self._letter
 
     def print(self):
         print(self.letter)
@@ -72,7 +77,7 @@ class StackList:
             placeholder = '#'
             for s in self.stacks:
                 try: 
-                    row += f"{s.get_tile(i).get_letter():<{PADDING}}"
+                    row += f"{s.get_tile(i).letter:<{PADDING}}"
                 except:
                     row += f"{placeholder:<{PADDING}}"
             print(row)
