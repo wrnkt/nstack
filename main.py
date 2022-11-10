@@ -40,6 +40,18 @@ class Stack:
             str_out += str(tile) + "\n"
 
         return str_out
+
+    def has_valid_word(self):
+        from_bottom = True
+        possible_word_string = ""
+        if from_bottom:
+            for tile in self.tiles:
+                possible_word_string += str(tile)
+
+        # if possible_word_string:
+
+        print(possible_word_string)
+
     
     def pop_last_tile(self) -> str:
         last_tile = self.tiles.pop()
@@ -208,6 +220,7 @@ def game_test():
     while True:
         get_move(play_stacks)
         print_state(play_stacks)
+        play_stacks.stacks[-1].has_valid_word()
 
     print(s1.tiles[0])
 
